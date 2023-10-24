@@ -14,6 +14,11 @@
 #   end
 # end
 
-(1..5).each do |i|
-  Item.create(name: "商品#{i}", price: i)
-end
+item_a = Item.create(name: '商品A', price: 100)
+item_a.image.attach(io: File.open('app/assets/images/sample.jpg'), filename: 'sample.jpg')
+
+item_b = Item.create(name: '商品B', price: 200)
+item_b.image.attach(io: File.open('app/assets/images/sample.jpg'), filename: 'sample.jpg')
+
+item_c = Item.create(name: '商品C', price: 300)
+item_c.image.attach(io: File.open('app/assets/images/sample.jpg'), filename: 'sample.jpg')
