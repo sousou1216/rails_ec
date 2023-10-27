@@ -18,7 +18,6 @@ class ItemsController < ApplicationController
     # idに対応する単一のレコードを取得
     @item = Item.find(params[:id])
 
-    @items = Item.all
     @item_end = Item.last
   end
 
