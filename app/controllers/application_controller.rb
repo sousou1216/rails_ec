@@ -1,11 +1,17 @@
 class ApplicationController < ActionController::Base
-  before_action :basic_auth
+  # before_action :login_required
+  # 全てのビューから使えるようにする
+  # helper_method :current_user
 
-  private
+  # アクションではないメソッドはprivateで定義する
+  # private
 
-  def basic_auth
-    authenticate_or_request_with_http_basic do |username, password|
-      username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
-    end
-  end
+  # def login_required
+  #   redirect_to login_url unless current_user
+  # end
+
+  # findメソッドではnilの時エラーとなるためfind_byを使う
+  # def current_user
+  #   @current_user || = User.find_by(id: session[:user_id] if session[:user_id])
+  # end
 end
