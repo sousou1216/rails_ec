@@ -21,6 +21,12 @@ class ItemsController < ApplicationController
     @item_end = Item.last
   end
 
+  # def destroy
+  #   item = Item.find(params[:id])
+  #   item.delete
+  #   redirect_to admin_root_path
+  # end
+
   private
 
   def post_params
