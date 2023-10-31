@@ -11,13 +11,21 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    Item.create(post_params)
+    # ビューで使用しないため@は不要
+    item = Item.create(post_params)
+    item.images.attach(io: File.open("app/assets/images/sample_0.jpg"), filename: "sample_0.jpg")
+    item.save!
+    redirect_to admin_root_path
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def update
+    item = Item.find(params[:id])
+    item.update!(post_params)
+    redirect_to admin_root_path
   end
 
   def destroy
@@ -29,7 +37,7 @@ class Admin::ItemsController < ApplicationController
   private
 
   def post_params
-    params.require(:item).permit(:name, :price, :description, :discount)
+    params.require(:item).permit(:name, :price, :discount, :description)
   end
 
   def basic_auth

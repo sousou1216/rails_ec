@@ -39,9 +39,11 @@
       <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
         <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
       </div>
-      <div>
-        <%= link_to '編集', edit_admin_item_path(item), class: 'btn btn-danger' %>
-        <%= link_to "削除", admin_item_path(item), data: { turbo_method: :delete, turbo_confirm: "タスク「#{item.name}」を削除します。よろしいですか？" }, class: "btn btn-danger" %>
+      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex justify-content-center">
+        <%= link_to '編集', edit_admin_item_path(item), class: 'btn btn-primary' %>
+        <%# 空白挿入 %>
+        <div>&nbsp;</div>
+        <%= link_to '削除', admin_item_path(item), data: { turbo_method: :delete, turbo_confirm: "タスク「#{item.name}」を削除します。よろしいですか？" }, class: "btn btn-danger" %>
       </div>
     </div>
   </div>

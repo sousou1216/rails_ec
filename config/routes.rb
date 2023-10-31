@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     root 'items#index'
   end
   
-  resources :items, only: %i[index new create show]
+  resources :items, only: %i[index show]
   root 'items#index'
 
 end
