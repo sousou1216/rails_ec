@@ -15,4 +15,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules/bootstrap
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
 # アセットパイプライン
-Rails.application.config.assets.precompile += %w(bootstrap.min.js)
+Rails.application.config.assets.precompile += %w[bootstrap.min.js]

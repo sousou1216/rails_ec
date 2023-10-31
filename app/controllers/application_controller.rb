@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   # before_action :login_required
   # 全てのビューから使えるようにする
