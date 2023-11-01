@@ -14,11 +14,17 @@
 #   end
 # end
 
-item_a = Item.create(name: '商品A', price: 100)
-item_a.image.attach(io: File.open('app/assets/images/sample.jpg'), filename: 'sample.jpg')
+names = %w[a b c]
+prices = [100, 200, 300]
+discounts = [80, nil, 50]
+descriptions = %w[サッカーボール バスケットボール バレーボール]
+count = 2
 
-item_b = Item.create(name: '商品B', price: 200)
-item_b.image.attach(io: File.open('app/assets/images/sample.jpg'), filename: 'sample.jpg')
-
-item_c = Item.create(name: '商品C', price: 300)
-item_c.image.attach(io: File.open('app/assets/images/sample.jpg'), filename: 'sample.jpg')
+i = 0
+while i < names.count
+  item = Item.create(name: "商品#{names[i]}", price: prices[i], discount: discounts[i], description: descriptions[i])
+  count.times do |num|
+    item.images.attach(io: File.open("app/assets/images/sample_#{num}.jpg"), filename: "sample_#{num}.jpg")
+  end
+  i += 1
+end

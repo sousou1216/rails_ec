@@ -3,6 +3,7 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.all
+    @item_end = Item.last
   end
 
   def new
@@ -10,12 +11,19 @@ class ItemsController < ApplicationController
   end
 
   def create
-    Item.create(item_params)
+    Item.create(post_params)
+  end
+
+  def show
+    # idに対応する単一のレコードを取得
+    @item = Item.find(params[:id])
+
+    @item_end = Item.last
   end
 
   private
 
-  def item_params
-    params.require(:item).permit(:name, :price, :image)
+  def post_params
+    params.require(:item).permit(:name, :price, :description, :discount)
   end
 end
