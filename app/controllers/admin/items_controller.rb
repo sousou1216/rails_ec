@@ -2,6 +2,8 @@
 
 module Admin
   class ItemsController < ApplicationController
+    skip_before_action :login_required
+    # before_action :require_admin
     before_action :basic_auth
 
     def index
@@ -17,6 +19,7 @@ module Admin
       # ビューで使用しないため@は不要
       item = Item.create(post_params)
       item.images.attach(io: File.open('app/assets/images/sample_0.jpg'), filename: 'sample_0.jpg')
+      item.images.attach(io: File.open('app/assets/images/sample_1.jpg'), filename: 'sample_1.jpg')
       item.save!
       redirect_to admin_root_path
     end
@@ -42,6 +45,10 @@ module Admin
     def post_params
       params.require(:item).permit(:name, :price, :discount, :description)
     end
+
+    # def require_admin
+    #   redirect_to login_url unless current_user.admin?
+    # end
 
     def basic_auth
       authenticate_or_request_with_http_basic do |username, password|

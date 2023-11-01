@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :login_required
   # 全てのビューから使えるようにする
   helper_method :current_user
+
+  before_action :login_required
 
   # アクションではないメソッドはprivateで定義する
   private
