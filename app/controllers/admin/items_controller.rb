@@ -14,12 +14,15 @@ module Admin
     end
 
     def create
-      # ビューで使用しないため@は不要
-      item = Item.create(post_params)
-      item.images.attach(io: File.open('app/assets/images/sample_0.jpg'), filename: 'sample_0.jpg')
-      item.images.attach(io: File.open('app/assets/images/sample_1.jpg'), filename: 'sample_1.jpg')
-      item.save!
-      redirect_to admin_root_path
+      @item = Item.create(post_params)
+      @item.images.attach(io: File.open('app/assets/images/sample_0.jpg'), filename: 'sample_0.jpg')
+      @item.images.attach(io: File.open('app/assets/images/sample_1.jpg'), filename: 'sample_1.jpg')
+
+      if @item.save
+        redirect_to admin_root_path, notice: "商品「#{@item.name}」を登録しました。"
+      else
+        render :new
+      end
     end
 
     def edit
@@ -27,15 +30,19 @@ module Admin
     end
 
     def update
-      item = Item.find(params[:id])
-      item.update!(post_params)
-      redirect_to admin_root_path
+      @item = Item.find(params[:id])
+
+      if @item.update(post_params)
+        redirect_to admin_root_path, notice: "商品「#{@item.name}」を更新しました。"
+      else
+        render :edit
+      end
     end
 
     def destroy
-      item = Item.find(params[:id])
-      item.delete
-      redirect_to admin_root_path
+      @item = Item.find(params[:id])
+      @item.delete
+      redirect_to admin_root_path, notice: "商品「#{@item.name}」を削除しました。"
     end
 
     private
