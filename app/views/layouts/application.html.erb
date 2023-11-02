@@ -17,11 +17,12 @@
         <li class="nav-item"><%= link_to '商品一覧（管理者）', admin_items_path, class: 'nav-link' %></li>
       </ul>
     </div>
+    <%# containerで左右の余白を挿入 %>
     <div class="container">
       <% if flash.notice.present? %>
         <div class="alert alert-success"><%= flash.notice %></div>
       <% end %>
+      <%= yield %>
     </div>
-    <%= yield %>
   </body>
 </html>
