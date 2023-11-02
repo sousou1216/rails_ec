@@ -2,8 +2,6 @@
 
 module Admin
   class ItemsController < ApplicationController
-    skip_before_action :login_required
-    # before_action :require_admin
     before_action :basic_auth
 
     def index
@@ -45,10 +43,6 @@ module Admin
     def post_params
       params.require(:item).permit(:name, :price, :discount, :description)
     end
-
-    # def require_admin
-    #   redirect_to login_url unless current_user.admin?
-    # end
 
     def basic_auth
       authenticate_or_request_with_http_basic do |username, password|
