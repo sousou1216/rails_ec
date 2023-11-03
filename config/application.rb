@@ -29,5 +29,6 @@ module Myapp
       g.factory_bot false
     end
     config.action_view.default_form_builder = 'ApplicationFormBuilder'
+    config.session_store :cookie_store, key: '_your_app_session'
   end
 end

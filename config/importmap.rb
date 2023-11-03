@@ -2,3 +2,4 @@
 # preload: trueでjsファイルを読み込む前にライブラリを読み込むようにする
 pin 'application', preload: true
 pin 'bootstrap', to: 'bootstrap.min.js', preload: true
+pin "@hotwired/turbo-rails", to: "turbo.js"
