@@ -3,6 +3,7 @@
 module Admin
   class ItemsController < ApplicationController
     before_action :basic_auth
+    before_action :filter_method, only: [:edit, :update, :destroy]
 
     def index
       @items = Item.all
@@ -26,12 +27,9 @@ module Admin
     end
 
     def edit
-      @item = Item.find(params[:id])
     end
 
     def update
-      @item = Item.find(params[:id])
-
       if @item.update(post_params)
         redirect_to admin_root_path, notice: "商品「#{@item.name}」を更新しました。"
       else
@@ -40,7 +38,6 @@ module Admin
     end
 
     def destroy
-      @item = Item.find(params[:id])
       @item.delete
       redirect_to admin_root_path, notice: "商品「#{@item.name}」を削除しました。"
     end
@@ -55,6 +52,9 @@ module Admin
       authenticate_or_request_with_http_basic do |username, password|
         username == ENV['BASIC_AUTH_USER'] && password == ENV['BASIC_AUTH_PASSWORD']
       end
+    end
+    def filter_method
+      @item = Item.find(params[:id])
     end
   end
 end
