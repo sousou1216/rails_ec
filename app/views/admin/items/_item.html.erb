@@ -1,0 +1,50 @@
+<% items.each do |item| %>
+  <div class="col mb-5">
+    <div class="card h-100">
+      <!-- Sale badge-->
+      <% if item.discount %>
+        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+      <% end %>
+      <!-- Product image-->
+      <div>
+        <div>
+          <%= image_tag item.images[0], class: "card-img-top", alt:"..." if item.images.attached? %>
+        </div>
+      </div>
+      <!-- Product details-->
+      <div class="card-body p-4">
+        <div class="text-center">
+          <!-- Product name-->
+          <h5 class="fw-bolder"><%= link_to item.name, item %></h5>
+          <!-- Product reviews-->
+          <%# TODO: スターの条件分岐 %>
+          <div class="d-flex justify-content-center small text-warning mb-2">
+            <div class="bi-star-fill"></div>
+            <div class="bi-star-fill"></div>
+            <div class="bi-star-fill"></div>
+            <div class="bi-star-fill"></div>
+            <div class="bi-star-fill"></div>
+          </div>
+          <!-- Product price-->
+          <% if item.discount %>
+            <span class="text-muted text-decoration-line-through"><%= item.price %></span>
+            <%= item.discount %>
+          <% else %>
+            <%= item.price %>
+          <% end %>
+        </div>
+      </div>
+      <%# TODO: View optionsの条件分岐 %>
+      <!-- Product actions-->
+      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+      </div>
+      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex justify-content-center">
+        <%= link_to '編集', edit_admin_item_path(item), class: 'btn btn-primary' %>
+        <%# 空白挿入 %>
+        <div>&nbsp;</div>
+        <%= link_to '削除', admin_item_path(item), data: { turbo_method: :delete, turbo_confirm: "タスク「#{item.name}」を削除します。よろしいですか？" }, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+<% end %>
