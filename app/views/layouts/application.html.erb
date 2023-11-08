@@ -9,9 +9,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= favicon_link_tag("favicon.ico") %>
   </head>
-  
   <body>
-  
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container px-4 px-lg-5">
@@ -51,7 +49,6 @@
         </div>
       </div>
     </nav>
-
     <%# containerで左右の余白を挿入 %>
     <div class="container">
       <% if flash.notice.present? %>

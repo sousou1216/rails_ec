@@ -3,7 +3,7 @@
 module Admin
   class ItemsController < ApplicationController
     before_action :basic_auth
-    before_action :filter_method, only: [:edit, :update, :destroy]
+    before_action :filter_method, only: %i[edit update destroy]
 
     def index
       @items = Item.all
@@ -26,8 +26,7 @@ module Admin
       end
     end
 
-    def edit
-    end
+    def edit; end
 
     def update
       if @item.update(post_params)
@@ -53,6 +52,7 @@ module Admin
         username == ENV['BASIC_AUTH_USER'] && password == ENV['BASIC_AUTH_PASSWORD']
       end
     end
+
     def filter_method
       @item = Item.find(params[:id])
     end
