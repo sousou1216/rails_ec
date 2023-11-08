@@ -36,7 +36,7 @@
     <%# TODO: View optionsの条件分岐 %>
     <!-- Product actions-->
     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-      <div class="text-center"><%= link_to 'Add to cart', carts_add_path(item), class: "btn btn-outline-dark mt-auto" %></div>
+      <div class="text-center"><%= link_to 'Add to cart', carts_add_to_cart_path(id: item_end), class: "btn btn-outline-dark mt-auto" %></div>
     </div>
   </div>
 </div>
