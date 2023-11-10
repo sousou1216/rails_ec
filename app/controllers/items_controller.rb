@@ -13,9 +13,4 @@ class ItemsController < ApplicationController
     @item_end = Item.last
   end
 
-  private
-
-  def post_params
-    params.require(:item).permit(:name, :price, :discount, :description)
-  end
 end

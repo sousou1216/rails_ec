@@ -37,7 +37,7 @@ module Admin
     end
 
     def destroy
-      @item.delete
+      @item.destroy
       redirect_to admin_root_path, notice: "商品「#{@item.name}」を削除しました。"
     end
 
