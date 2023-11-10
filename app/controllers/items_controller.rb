@@ -12,5 +12,4 @@ class ItemsController < ApplicationController
 
     @item_end = Item.last
   end
-
 end
