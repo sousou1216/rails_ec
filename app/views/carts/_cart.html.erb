@@ -4,10 +4,10 @@
     <span class="text-primary">Your cart</span>
     <span class="badge bg-primary rounded-pill">
       <%# カート数表示 %>
-      <% if session[:cart].nil? || session[:cart].empty? %>
+      <% if current_cart.items.nil? || current_cart.items.empty? %>
         0
       <% else %>
-        <%= session[:cart].length %>
+        <%= current_cart.items.length %>
       <% end %>
     </span>
   </h4>
@@ -15,7 +15,7 @@
   <% total_price = 0 %>
   <ul class="list-group mb-3">
     <%# カートの中身を表示 %>
-    <% session[:cart].each do |item| %>
+    <% current_cart.items.each do |item| %>
       <li class="list-group-item d-flex justify-content-between lh-sm">
         <div>
           <h6 class="my-0"><%= item['name'] %></h6>
