@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def current_cart
     # セッションにcart_idがあればそれを使用し、なければ新しいカートを作成
-    @current_cart ||= Cart.find_by(id: session[:cart_id]) || Cart.create
+    @current_cart = Cart.find_or_create_by(id: session[:cart_id])
     # カートが新しく作成された場合はセッションにcart_idを保存
     session[:cart_id] ||= @current_cart.id
 
