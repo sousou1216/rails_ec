@@ -37,7 +37,7 @@
       <%# TODO: View optionsの条件分岐 %>
       <!-- Product actions-->
       <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-        <%# TODO: carts_add_to_cart_path(item)とするとparams[:id]がnilになる%>
+        <%# carts_add_to_cart_path(item)とするとparams[:id]がnilになる%>
         <div class="text-center"><%= link_to 'Add to cart', carts_add_to_cart_path(id: item), class: "btn btn-outline-dark mt-auto" %></div>
       </div>
     </div>
