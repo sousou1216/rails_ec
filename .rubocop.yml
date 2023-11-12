@@ -27,3 +27,7 @@ Hc/RailsSpecificActionName:
 # Rails/ReversibleMigrationの警告を無効化
 Rails/ReversibleMigration:
   Enabled: false
+
+Hc/RailsSpecificActionName:
+  Exclude: 
+    - 'app/controllers/carts_controller.rb'
