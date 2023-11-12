@@ -15,4 +15,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules/bootstrap
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
 # アセットパイプライン
+# 圧縮し最適化された状態でブラウザに%w[bootstrap.min.js]を配信
 Rails.application.config.assets.precompile += %w[bootstrap.min.js]

@@ -1,9 +1,7 @@
-<div class="mx-5">
-  <div class="d-flex align-items-center">
-    <h1>商品作成</h1>
-    <div class="ms-auto boards__linkBox">
-      <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-dark" %>
-    </div>
+<div class="d-flex align-items-center">
+  <h1>商品作成</h1>
+  <div class="ms-auto boards__linkBox">
+    <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-dark" %>
   </div>
-  <%= render partial: "form", locals: { item: @item } %>
 </div>
+<%= render partial: "form", locals: { item: @item } %>
