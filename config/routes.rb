@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :items, only: %i[index show]
   resources :carts, only: %i[index]
+  resources :bills, only: %i[create]
 
   get 'carts/add_to_cart', to: 'carts#add_to_cart'
   # カートへの複数登録はpost
