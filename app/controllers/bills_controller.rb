@@ -15,7 +15,7 @@ class BillsController < ApplicationController
   private
 
   def post_params
-    params.require(:bill).permit(:first_name, :last_name, :user_name, :email, :address, :address_2 \
+    params.require(:bill).permit(:first_name, :last_name, :user_name, :email, :address, :address2 \
       , :country, :state, :zip, :shipping_address_same_address, :save_information, :name_on_card \
       , :credit_card_number, :expiration, :cvv)
   end
