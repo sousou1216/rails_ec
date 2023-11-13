@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_13_124009) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_13_230330) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_13_124009) do
     t.string "user_name"
     t.string "email"
     t.string "address"
-    t.string "address_2"
+    t.string "address2"
     t.string "country"
     t.string "state"
     t.string "zip"
@@ -74,21 +74,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_13_124009) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "user_name"
-    t.string "email"
-    t.string "address"
-    t.string "address_2"
-    t.string "country"
-    t.string "state"
-    t.string "zip"
-    t.string "shipping_address_same_address"
-    t.string "save_information"
-    t.string "name_on_card"
-    t.string "credit_card_number"
-    t.string "expiration"
-    t.string "cvv"
   end
 
   create_table "items", force: :cascade do |t|
