@@ -79,12 +79,6 @@
       </div>
       <hr class="my-4">
       <h4 class="mb-3">Payment</h4>
-      <div class="my-3">
-        <div class="form-check">
-          <%= f.radio_button :paymentMethod, 'credit', class: 'form-check-input', id: 'credit', required: true %>
-          <%= f.label :paymentMethod, 'Credit card', class: 'form-check-label' %>
-        </div>
-      </div>
       <div class="row gy-3">
         <div class="col-md-6">
           <%= f.label :cc_name, 'Name on card' %>
