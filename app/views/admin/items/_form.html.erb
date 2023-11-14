@@ -1,10 +1,3 @@
-<% if item.errors.present? %>
-  <ul id="error_explanation">
-    <% item.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
 <%# DBにデータが存在するかどうかで条件分岐 %>
 <% if item.persisted? %>
   <%= form_with model: item, url: admin_item_path(item), method: :patch do |f| %>

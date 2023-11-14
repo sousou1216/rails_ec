@@ -24,10 +24,16 @@ Hc/RailsSpecificActionName:
   Exclude:
     - app/controllers/users/omniauth_callbacks_controller.rb
 
-# Rails/ReversibleMigrationの警告を無効化
-Rails/ReversibleMigration:
+# 警告を無効化したいものを以下に追記していく
+Hc/ReversibleMigration:
   Enabled: false
 
 Hc/RailsSpecificActionName:
   Exclude: 
     - 'app/controllers/carts_controller.rb'
+
+Hc/VariableNumber:
+  Enabled: false
+
+Hc/BulkChangeTable:
+  Enabled: false
