@@ -1,6 +1,5 @@
 <h3>購入明細詳細</h3>
 <p>請求情報</p>
-
 <ul>
   <li>カートID：<%= @purchases[0].cart_id %></li>
   <li>購入日時：<%= @purchases[0].created_at %></li>
@@ -9,7 +8,6 @@
   <li>住所：<%= @bill.address %></li>
   <%# 以下必要に応じて追加 %>
 </ul>
-
 <p>購入情報</p>
 <ul>
   <% total_price = 0 %>
@@ -27,7 +25,6 @@
   <% end %>
   <li>合計金額：<%= total_price %></li>
 </ul>
-
 <div>
   <%= link_to '一覧', admin_purchases_index_path, class: "btn btn-outline-dark mt-auto" %>
 </div>
