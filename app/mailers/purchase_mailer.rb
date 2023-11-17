@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PurchaseMailer < ApplicationMailer
   def creation_email(bill, items)
     @bill = bill

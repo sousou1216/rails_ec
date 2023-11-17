@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BillsController < ApplicationController
   # カートが空以外の時に実行
   before_action :filter_method, only: [:create]
@@ -6,7 +8,7 @@ class BillsController < ApplicationController
     # createを省略
     # 請求情報を保存
     @bill = Bill.new(post_params)
-    
+
     if @bill.save
       # 購入明細（カートの中身）を保存
       current_cart.items.each do |item|
@@ -43,8 +45,8 @@ class BillsController < ApplicationController
   end
 
   def filter_method
-    if current_cart.items.nil? || current_cart.items.empty?
-      redirect_to carts_path, alert: 'カートが空です。'
-    end
+    return if current_cart.items.present?
+
+    redirect_to carts_path, alert: 'カートが空です。'
   end
 end
