@@ -1,0 +1,33 @@
+<h3>購入明細詳細</h3>
+<p>請求情報</p>
+
+<ul>
+  <li>カートID：<%= @purchases[0].cart_id %></li>
+  <li>購入日時：<%= @purchases[0].created_at %></li>
+  <li>購入者名：<%= @bill.first_name + ' ' + @bill.last_name %></li>
+  <li>メールアドレス：<%= @bill.email %></li>
+  <li>住所：<%= @bill.address %></li>
+  <%# 以下必要に応じて追加 %>
+</ul>
+
+<p>購入情報</p>
+<ul>
+  <% total_price = 0 %>
+  <%# TODO：商品毎にまとめる %>
+  <% @purchases.each do |purchase| %>
+    <li>商品：<%= purchase.name %></li>
+    <li>詳細：<%= purchase.description %></li>
+    <li>金額：<%= purchase.price %></li>
+    <li>割引金額：<%= purchase.discount %></li>
+    <% if purchase.discount %>
+      <% total_price += purchase.discount %>
+    <% else %>
+      <% total_price += purchase.price %>
+    <% end %>
+  <% end %>
+  <li>合計金額：<%= total_price %></li>
+</ul>
+
+<div>
+  <%= link_to '一覧', admin_purchases_index_path, class: "btn btn-outline-dark mt-auto" %>
+</div>

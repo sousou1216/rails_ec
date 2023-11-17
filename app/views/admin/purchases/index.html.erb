@@ -1,0 +1,23 @@
+<h3>購入明細一覧</h3>
+<ul>
+  <% displayed_cart_ids = [] %> <!-- 一時的な配列を初期化 -->
+
+  <% @purchases.each do |purchase| %>
+    <% cart_id = purchase.cart_id %>
+    
+    <% unless displayed_cart_ids.include?(cart_id) %> <!-- 重複チェック -->
+      <% displayed_cart_ids << cart_id %> <!-- 一時的な配列に追加 -->
+
+      <% bill = Bill.find(purchase.bill_id) %>
+      <li>
+        カートID：<%= cart_id %>/
+        購入日時：<%= purchase.created_at %>/
+        購入者名：<%= bill.first_name + ' ' + bill.last_name %>/
+        <div>
+          <%# purchaseがないとエラーになる %>
+          <%= link_to '詳細', admin_purchase_path(purchase, cart_id: cart_id), class: "btn btn-outline-dark mt-auto" %>
+        </div>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
