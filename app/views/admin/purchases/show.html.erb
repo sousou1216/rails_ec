@@ -23,8 +23,8 @@
       <% total_price += purchase.price %>
     <% end %>
   <% end %>
-  <li>合計金額：<%= total_price %></li>
 </ul>
+<p>合計金額：<%= total_price %></p>
 <div>
   <%= link_to '一覧', admin_purchases_index_path, class: "btn btn-outline-dark mt-auto" %>
 </div>
