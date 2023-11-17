@@ -1,44 +1,23 @@
-以下を購入しました-- 購入明細情報 --
-<%# 初期値の設定 %>
+購入明細詳細
+請求情報
+  カートID：<%= @cart_id %>
+  購入日時：<%= @bill.created_at %>
+  購入者名：<%= @bill.first_name + ' ' + @bill.last_name %>
+  メールアドレス：<%= @bill.email %>
+  住所：<%= @bill.address %>
+  <%# 以下必要に応じて追加 %>
+購入情報
 <% total_price = 0 %>
-<ul class="list-group mb-3">
-  <%# カートの中身を表示 %>
-  <% @items.each do |item| %>
-    <li class="list-group-item d-flex justify-content-between lh-sm">
-      <div>
-        <h6 class="my-0"><%= item['name'] %></h6>
-        <small class="text-body-secondary"><%= item['description'] %></small>
-      </div>
-      <%# divで囲むことで表示位置を整える %>
-      <div>
-        <span class="text-body-secondary">
-          <% if item['discount'] %>
-            <%= item['discount'] %>
-          <% else %>
-            <%= item['price'] %>
-          <% end %>
-        </span>
-      </div>
-      <%# 各アイテムの価格を合計に追加 %>
-      <% if item['discount'] %>
-        <% total_price += item['discount'].to_i %>
-      <% else %>
-        <% total_price += item['price'].to_i %>
-      <% end %>
-    </li>
+<%# TODO：商品毎にまとめる %>
+<% @items.each do |item| %>
+  商品：<%= item.name %>
+  詳細：<%= item.description %>
+  金額：<%= item.price %>
+  割引金額：<%= item.discount %>
+  <% if item.discount %>
+    <% total_price += item.discount %>
+  <% else %>
+    <% total_price += item.price %>
   <% end %>
-  <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
-    <div class="text-success">
-      <h6 class="my-0">Promo code</h6>
-      <small>EXAMPLECODE</small>
-    </div>
-    <% promo_price = -5 %>
-    <span class="text-success"><%= promo_price %></span>
-    <%# 各アイテムの価格を合計に追加 %>
-    <% total_price += promo_price.to_i %>
-  </li>
-  <li class="list-group-item d-flex justify-content-between">
-    <span>Total (USD)</span>
-    <strong><%= total_price %></strong>
-  </li>
-</ul>
+<% end %>
+合計金額：<%= total_price %>

@@ -25,7 +25,7 @@ class BillsController < ApplicationController
       end
 
       # メイラーを呼び出す
-      PurchaseMailer.creation_email(@bill, current_cart.items).deliver_now
+      PurchaseMailer.creation_email(@bill, current_cart.items, current_cart.id).deliver_now
       # カートのセッションをクリア({}にするとうまくいかない)
       session[:cart_id] = nil
 
