@@ -10,22 +10,25 @@ class BillsController < ApplicationController
     @bill = Bill.new(post_params)
 
     if @bill.save
-      # 購入明細（カートの中身）を保存
-      current_cart.items.each do |item|
-        purchase = Purchase.new(
-          name: item['name'],
-          description: item['description'],
-          discount: item['discount'],
-          price: item['price'],
-          cart_id: current_cart.id,
-          bill_id: @bill.id
-        )
+      # 例外が発生した場合はロールバックする
+      ActiveRecord::Base.transaction do
+        # 購入明細（カートの中身）を保存
+        current_cart.items.each do |item|
+          purchase = Purchase.new(
+            name: item['name'],
+            description: item['description'],
+            discount: item['discount'],
+            price: item['price'],
+            cart_id: current_cart.id,
+            bill_id: @bill.id
+          )
 
-        purchase.save
+          purchase.save
+        end
       end
 
       # メイラーを呼び出す
-      PurchaseMailer.creation_email(@bill, current_cart.items, current_cart.id).deliver_now
+      PurchaseMailer.creation_email(@bill, current_cart.items).deliver_now
       # カートのセッションをクリア({}にするとうまくいかない)
       session[:cart_id] = nil
 
