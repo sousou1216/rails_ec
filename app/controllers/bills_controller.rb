@@ -5,8 +5,6 @@ class BillsController < ApplicationController
   before_action :filter_method, only: [:create]
 
   def create
-    # createを省略
-    # 請求情報を保存
     @bill = Bill.new(post_params)
 
     if @bill.save

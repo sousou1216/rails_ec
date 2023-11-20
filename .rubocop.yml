@@ -37,3 +37,6 @@ Hc/VariableNumber:
 
 Hc/BulkChangeTable:
   Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
