@@ -2,11 +2,8 @@
 
 Rails.application.routes.draw do
   namespace :admin do
-    get 'purchases/index'
-    get 'purchases/new'
-    get 'purchases/create'
     resources :items, only: %i[index new create edit update destroy]
-    resources :purchases, only: %i[index show new create]
+    resources :bills, only: %i[index show create]
     root 'items#index'
   end
 
