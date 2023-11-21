@@ -12,7 +12,7 @@
 <ul>
   <% total_price = 0 %>
   <%# TODO：商品毎にまとめる %>
-  <% @purchases.each do |purchase| %>
+  <% @bill.purchases.each do |purchase| %>
     <li>商品：<%= purchase.name %></li>
     <li>詳細：<%= purchase.description %></li>
     <li>金額：<%= purchase.price %></li>
