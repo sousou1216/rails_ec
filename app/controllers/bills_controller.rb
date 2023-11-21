@@ -20,7 +20,7 @@ class BillsController < ApplicationController
           cart_id: current_cart.id,
           bill_id: @bill.id
         )
-        
+
         purchase.save!
       end
     end
@@ -31,7 +31,7 @@ class BillsController < ApplicationController
     session[:cart_id] = nil
 
     redirect_to items_path, notice: '購入ありがとうございます。'
-  rescue
+  rescue StandardError
     render carts_path
   end
 

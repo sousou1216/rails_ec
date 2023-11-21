@@ -14,7 +14,6 @@ module Admin
     def show
       # includesで親子関係のデータリソースをまとめてDBから取得
       @bill = Bill.includes(:purchases).find(params[:id])
-      
     end
 
     def create
@@ -33,7 +32,7 @@ module Admin
             cart_id: current_cart.id,
             bill_id: @bill.id
           )
-          
+
           purchase.save!
         end
       end
@@ -44,8 +43,8 @@ module Admin
       session[:cart_id] = nil
 
       redirect_to items_path, notice: '購入ありがとうございます。'
-    # rescue
-    #   render carts_path
+      # rescue
+      #   render carts_path
     end
 
     private
