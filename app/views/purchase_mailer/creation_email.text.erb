@@ -1,0 +1,23 @@
+購入明細詳細
+請求情報
+  購入ID：<%= @bill.id %>
+  購入日時：<%= @bill.created_at %>
+  購入者名：<%= @bill.first_name + ' ' + @bill.last_name %>
+  メールアドレス：<%= @bill.email %>
+  住所：<%= @bill.address %>
+  <%# 以下必要に応じて追加 %>
+購入情報
+<% total_price = 0 %>
+<%# TODO：商品毎にまとめる %>
+<% @items.each do |item| %>
+  商品：<%= item.name %>
+  詳細：<%= item.description %>
+  金額：<%= item.price %>
+  割引金額：<%= item.discount %>
+  <% if item.discount %>
+    <% total_price += item.discount %>
+  <% else %>
+    <% total_price += item.price %>
+  <% end %>
+<% end %>
+合計金額：<%= total_price %>

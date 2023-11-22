@@ -31,6 +31,7 @@
             </li>
             <%# 管理者リンクを追加 %>
             <li class="nav-item"><%= link_to '管理者ページ', admin_items_path, class: 'nav-link' %></li>
+            <li class="nav-item"><%= link_to '購入明細', admin_bills_path	, class: 'nav-link' %></li>
           </ul>
           <form class="d-flex">
             <button class="btn btn-outline-dark" type="submit">
@@ -53,6 +54,9 @@
     <div class="container">
       <% if flash.notice.present? %>
         <div class="alert alert-success"><%= flash.notice %></div>
+      <% end %>
+      <% if flash.alert.present? %>
+        <div class="alert alert-info"><%= flash.alert %></div>
       <% end %>
       <%= yield %>
     </div>

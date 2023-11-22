@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :items, only: %i[index new create edit update destroy]
+    resources :bills, only: %i[index show create]
     root 'items#index'
   end
 

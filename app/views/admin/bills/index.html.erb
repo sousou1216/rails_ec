@@ -1,0 +1,13 @@
+<h3>購入明細一覧</h3>
+<ul>
+  <% @bills.each do |bill| %>
+    <li>
+      購入ID：<%= bill.id %>/
+      購入日時：<%= bill.created_at %>/
+      購入者名：<%= bill.first_name + ' ' + bill.last_name %>/
+      <div>
+        <%= link_to '詳細', admin_bill_path(bill), class: "btn btn-outline-dark mt-auto" %>
+      </div>
+    </li>
+  <% end %>
+</ul>

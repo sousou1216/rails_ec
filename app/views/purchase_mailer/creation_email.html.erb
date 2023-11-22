@@ -1,0 +1,27 @@
+<h3>購入明細詳細</h3>
+<p>請求情報</p>
+<ul>
+  <li>購入ID：<%= @bill.id %></li>
+  <li>購入日時：<%= @bill.created_at %></li>
+  <li>購入者名：<%= @bill.first_name + ' ' + @bill.last_name %></li>
+  <li>メールアドレス：<%= @bill.email %></li>
+  <li>住所：<%= @bill.address %></li>
+  <%# 以下必要に応じて追加 %>
+</ul>
+<p>購入情報</p>
+<ul>
+  <% total_price = 0 %>
+  <%# TODO：商品毎にまとめる %>
+  <% @items.each do |item| %>
+    <li>商品：<%= item.name %></li>
+    <li>詳細：<%= item.description %></li>
+    <li>金額：<%= item.price %></li>
+    <li>割引金額：<%= item.discount %></li>
+    <% if item.discount %>
+      <% total_price += item.discount %>
+    <% else %>
+      <% total_price += item.price %>
+    <% end %>
+  <% end %>
+</ul>
+<p>合計金額：<%= total_price %></p>
