@@ -1,0 +1,11 @@
+<h3>プロモーションコード一覧</h3>
+<ul>
+  <% @promotions.each do |promotion| %>
+    <li>
+      プロモーションコード：<%= promotion.code %>/
+      割引金額：<%= promotion.price %>/
+      日時：<%= promotion.created_at %>/
+      使用の有無：<%= promotion.used %>/
+    </li>
+  <% end %>
+</ul>
