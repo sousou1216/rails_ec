@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   helper_method :current_cart
+  helper_method :basic_auth
 
   private
 
@@ -26,5 +27,11 @@ class ApplicationController < ActionController::Base
     end
 
     @current_cart
+  end
+
+  def basic_auth
+    authenticate_or_request_with_http_basic do |username, password|
+      username == ENV['BASIC_AUTH_USER'] && password == ENV['BASIC_AUTH_PASSWORD']
+    end
   end
 end
