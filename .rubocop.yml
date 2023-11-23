@@ -40,3 +40,6 @@ Hc/BulkChangeTable:
 
 Metrics/MethodLength:
   Enabled: false
+
+Metrics/AbcSize:
+  Max: 40
