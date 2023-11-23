@@ -22,17 +22,22 @@ class BillsController < ApplicationController
         )
 
         purchase.save!
+
+        # プロモーションコードを使用済みにする
+        promotion = Promotion.find_by(code: session[:code])
+        promotion.update(used: true)
       end
     end
 
     # メイラーを呼び出す
     PurchaseMailer.creation_email(@bill, current_cart.items).deliver_now
-    # カートのセッションをクリア({}にするとうまくいかない)
+    # セッションをクリア({}にするとうまくいかない)
     session[:cart_id] = nil
+    session[:code] = nil
 
     redirect_to items_path, notice: '購入ありがとうございます。'
   rescue StandardError
-    render carts_path
+    redirect_to carts_path
   end
 
   private

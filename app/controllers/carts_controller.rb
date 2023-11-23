@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class CartsController < ApplicationController
-  def index; end
+  def index
+    @promo_price = params[:promo_price].to_i
+  end
 
   # カートにアイテムを追加
   def add_to_cart
