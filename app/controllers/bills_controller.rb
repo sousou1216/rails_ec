@@ -22,8 +22,10 @@ class BillsController < ApplicationController
         )
 
         purchase.save!
+      end
 
-        # プロモーションコードを使用済みにする
+      # プロモーションコードを使用済みにする
+      if session[:code]
         promotion = Promotion.find_by(code: session[:code])
         promotion.update(used: true)
       end
