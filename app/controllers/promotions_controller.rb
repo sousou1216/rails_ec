@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PromotionsController < ApplicationController
   def create
     promotion = Promotion.find_by(code: params[:code])
@@ -7,10 +9,9 @@ class PromotionsController < ApplicationController
       session[:code] = promotion.code
 
       promo_price = promotion.price
-      redirect_to carts_path(promo_price: promo_price)
     else
       promo_price = 0 # nilの場合はゼロとする
-      redirect_to carts_path(promo_price: promo_price)
     end
+    redirect_to carts_path(promo_price:)
   end
 end
