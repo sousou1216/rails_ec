@@ -1,4 +1,4 @@
-# 仕様
+## 仕様
 
 - 簡易ECサイト
 - 管理者はBasic認証
@@ -7,7 +7,7 @@
 - 画像の保存はActive Storage(S3)を使用
 - 購入メールサーバーは開発環境はMailCatcher、本番環境はGmailを使用
 
-# 操作手順
+## 操作手順
 
 - 商品をカートに追加し適当な請求情報を入力して購入する
 - 入力したメールアドレスに購入明細が届く
@@ -48,6 +48,12 @@ docker compose run --rm web bundle exec rails db:seed
 - プロモーションコードの追加
 ```
 docker compose run --rm web bundle exec rake promotion_code:generate
+```
+- 管理者設定
+```
+.envファイルに以下追記
+BASIC_AUTH_USER=<任意のユーザー名>
+BASIC_AUTH_PASSWORD=<任意のパスワード>
 ```
 
 ## rubocop
