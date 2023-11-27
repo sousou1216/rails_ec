@@ -1,11 +1,14 @@
 # README
 
-- ECサイトです。
-- 管理者はBasic認証が必要です。
+- ECサイト
+- 管理者はBasic認証
+- 商品の登録、編集、削除は管理者のみが可能
+- 画像の保存はActive Storage(S3)を使用
+- 購入メールサーバーはGmailを使用
 
 ## 前提
 
-- dockerが必要です。
+- dockerが必要
 
 ## setup
 
